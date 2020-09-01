@@ -1,0 +1,101 @@
+// compress: false
+@dark-gray: #333;
+.display(@dir, @justify, @align){
+    display: flex;
+    flex-direction: @dir;
+    justify-content: @justify;
+    align-items: @align;
+}
+.sizes(@width, @height){
+    width: @width;
+    height: @height;
+}
+.shadow{
+    box-shadow: 0 2px 8px @dark-gray;
+}
+.image-style{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  
+    background-color: lighten(@dark-gray, 30%);
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+
+.dialogs{
+    max-height: 80%;
+    margin: 0 auto;
+    .sizes(60%, 800px);
+    .display(column, flex-end, unset);
+    .shadow;
+  }
+  
+  .Chat-container{
+    background-image: url(assets/chat.png);
+    .image-style;
+    .sizes(100%, 90%);
+    .display(column, flex-end, flex-end);
+    overflow-y: scroll;
+  }
+  
+  .MessageForm-container{
+    background-color: @dark-gray;
+    .sizes(100%, 10%);
+    .display(row, space-evenly, center);
+  }
+  
+  .message{
+    background-color: white;
+    .shadow;
+    border-radius: 25px;
+    margin: 1% 2% 2% 0;
+    .sizes(max-content, max-content);
+    min-width: 10%;
+  }
+  
+  .message > p{
+    padding: 4%;
+    &.long{
+        text-align: initial;
+    }
+    &.short{
+        text-align: center;
+    }
+  }
+  
+  textarea{
+    padding-left: 5%;
+    .sizes(80%, 60%);
+    border-radius: 25px;
+    resize: none;
+    outline:none;
+    font-size: 16px;
+  }
+  
+  button{
+    border-radius: 25px;
+    .sizes(10%, 50%);
+    outline:none;
+    cursor: pointer;
+    &:hover{
+        background-color: lightgray;
+      }
+  }

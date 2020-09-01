@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react';
+
+import {db} from './firebase/firebase'
+
+import Chat from './Components/Chat';
+import MessageForm from './Components/MessageForm';
 
 function App() {
+  const [Messages, SetMessages] = useState([]);
+  const applyMessages = (message) => {
+    db.push(message);
+  }
+
+  useEffect(() => {
+    if(Messages.length === 0){
+      db.off();
+      db.on('value', (snapshot) => {
+        SetMessages(Object.values(snapshot.val()));
+        console.log('цикл'); 
+      })    
+    }
+      
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="dialogs">
+        <Chat data={Messages} />
+        <MessageForm add={applyMessages}/>
     </div>
   );
 }
