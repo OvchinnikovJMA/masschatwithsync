@@ -1,5 +1,8 @@
 import * as firebase from 'firebase';
 
+/**
+ * Конфигурация созданного тна firebase.google.com приложения  
+ */
 const firebaseConfig = {
   apiKey: "AIzaSyCXsjvxl9bz0ebJP5ErWhJSp5LaY9KCTa4",
   authDomain: "bd-1-cc335.firebaseapp.com",
@@ -11,6 +14,9 @@ const firebaseConfig = {
 }
 firebase.initializeApp(firebaseConfig);
 
+/**
+ * Переменная с ссылкой на каталог Messages базе данных 
+ */
 const db = firebase.database().ref().child('Messages');
 
 export {db}
